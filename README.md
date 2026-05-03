@@ -19,8 +19,9 @@ Bu çalışmada aşağıdaki temel kütüphaneler kullanılmıştır:
 3. Özellik Çıkarımı: TF-IDF vektörleştirme metodu ile metinler sayısallaştırılmıştır. (TfidfVectorizer)
 4. Model Eğitimi: Veri seti train_test_split ile ayrılmış ve modeller eğitilmiştir.
 5. Değerlendirme: classification_report ve confusion_matrix ile performans analizi gerçekleştirilmiştir.
-6. Hata Analizi: Üç model içinde hatalı tahminler hesaplanmış ve hatalı tahmin edilen metinler incelenmiştir.
-7. Açıklanabilirlik: make_pipeline kullanılarak oluşturulan yapı üzerinden LIME Ananlizi ile kelimelerin etkilerinin görselleştirilmesi gerçekleştirilmiştir.
+6. Özellik Önemi Analizi: Modelin hangi kelimelere dayanarak metne AI ve Human dediği incelenmiştir.
+7. Hata Analizi: Üç model içinde hatalı tahminler hesaplanmış ve hatalı tahmin edilen metinler incelenmiştir.
+8. Açıklanabilirlik: make_pipeline kullanılarak oluşturulan yapı üzerinden LIME Ananlizi ile kelimelerin etkilerinin görselleştirilmesi gerçekleştirilmiştir.
 
 ## Dosya Yapısı
 1. data: dataset_sample.csv dosyasının içermektedir. Bu dosya kullanılan ve oldukça büyük olan veri setinin sınıf bazlı eşit örnek olacak şekilde bir alt kümesidir.
@@ -50,7 +51,7 @@ Projeyi kendi ortamınızda çalıştırmak için aşağıdaki adımları izleyi
    2. Feature Extraction: Metinlerin sayısallaştırılması için ilgili dosyayı çalıştırın.(feature_extraction.py)
    3. Model Training: Modellerin eğitilmesi ve joblib ile kaydedilmesi için eğitim dosyasını çalıştırın.(train_model.py)
    5. Evaluation: Başarı metriklerini ve grafiklerini görmek için değerlendirme dosyasını çalıştırın.(evaluate_model.py)
-   7. LIME Analysis: Model kararlarının detaylı açıklamaları için LIME dosyasını çalıştırın.(optional_advanced_component.py)
+   7. Feature Importance,LIME and Error Analysis: Modelin yüksek seviye değerlendirmesini görmek için çalıştırın.(optional_advanced_component.py)
 
 ## Model Performans Sonuçları
 
@@ -61,6 +62,18 @@ Eğitilen modellerin test seti üzerindeki başarı oranları aşağıdaki gibid
 | Logistic Regression | %99,59 | %99,62 | %99,49 | %99,59 |
 | Naive Bayes | %97,14 | %97,09 | %96,76 | %96,92 |
 | **Linear SVM (En İyi)** | **%99,90** | **%99,91** | **%99,87** | **%99,89** |
+
+## Model Özellik Önemi Analizi
+
+En yüksek doğruluk elde edilen Linear SVM modeli üzerinde gerçekleştirilen öznitelik analizi ile modelin bir metne AI ve Human demesinde en çok etkili olan kelimeler incelenmiştir. Aşağıdaki görselde kelimeler sıralanmıştır:
+
+![Özellik Önemi Analizi Örneği](results/figures/öznitelik_analizi.png)
+
+## Model Hata Analizi
+
+Modeller için ayrı ayrı ve ortak bir hata analizi gerçekleştirilmiştir. Aşağıdaki görselde üç modelin ortak hata analizi gösterilmiştir:
+
+![Modellerin Ortan Hata Analizi Örneği](results/figures/öznitelik_analizi.png)
 
 ## Model Açıklanabilirlik (LIME)
 
